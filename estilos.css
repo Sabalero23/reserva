@@ -1,0 +1,158 @@
+/* Reset de estilos para normalizar la apariencia en diferentes navegadores */
+body, h1, h2, p, ul, li, form, input, select, table {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Contenedor principal centrándose en la pantalla */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+
+h1, h2, h3 {
+    color: #0066cc;
+    margin-bottom: 20px;
+}
+
+/* Modifica el ancho del formulario al 60% */
+form {
+    margin-bottom: 20px;
+    width: 60%;
+    max-width: 600px; /* Puedes ajustar este valor según tus necesidades */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Contenedor interno centrado */
+.centered-container {
+    max-width: 600px; /* Ajusta según tus necesidades */
+    margin: 0 auto;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004080;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #0066cc;
+}
+
+a:hover {
+    color: #004080;
+}
+
+/* Estilos para las imágenes de las canchas */
+.cancha {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.cancha img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Estilos para las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    input, select, button {
+        margin-bottom: 10px;
+    }
+}
+
+/* Agrega estos estilos en tu bloque de estilos CSS existente o crea un nuevo archivo de estilos */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
