@@ -3,14 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-12-2023 a las 23:53:02
+-- Tiempo de generación: 11-12-2023 a las 22:58:25
 -- Versión del servidor: 5.7.41-log
 -- Versión de PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "-03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `c1782212_reser`
+-- Base de datos: `reserva`
 --
 
 -- --------------------------------------------------------
@@ -62,7 +62,7 @@ CREATE TABLE `horarios` (
 --
 
 INSERT INTO `horarios` (`id`, `horario_inicio`, `horario_fin`, `suspendido`, `estado`) VALUES
-(1, '14:00:00', '15:00:00', 0, 0),
+(1, '14:00:00', '15:00:00', 0, 1),
 (2, '15:00:00', '16:00:00', 0, 1),
 (3, '16:00:00', '17:00:00', 0, 1),
 (4, '17:00:00', '18:00:00', 0, 1);
@@ -98,9 +98,9 @@ INSERT INTO `negocio` (`id`, `nombre`, `direccion`, `telefono`, `whatsapp`, `loc
 CREATE TABLE `reservas` (
   `id` int(11) NOT NULL,
   `cancha_id` int(11) NOT NULL,
-  `horario_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
-  `fecha_reserva` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha_reserva` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `horario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
