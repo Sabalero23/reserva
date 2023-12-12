@@ -7,11 +7,10 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'admin') {
     exit();
 }
 
-
 // Consultar reservas
 try {
-    // Consultar reservas con información del usuario
-    $stmtReservas = $conn->prepare("SELECT r.id as reserva_id, c.nombre as cancha_nombre, h.horario_inicio, h.horario_fin, u.id as usuario_id, u.nombre as usuario_nombre
+    // Consultar reservas con información del usuario, incluyendo la fecha de reserva
+    $stmtReservas = $conn->prepare("SELECT r.id as reserva_id, c.nombre as cancha_nombre, h.horario_inicio, h.horario_fin, r.fecha_reserva, u.id as usuario_id, u.nombre as usuario_nombre
                                     FROM reservas r
                                     INNER JOIN canchas c ON r.cancha_id = c.id
                                     INNER JOIN horarios h ON r.horario_id = h.id
@@ -32,6 +31,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos.css">
     <title>Reservas</title>
     <style>
         body {
@@ -91,24 +91,31 @@ try {
 </head>
 <body>
     <div class="container">
-        <p><a href="index.php">Volver a la Página Principal</a></p>
-
         <h2>Reservas</h2>
 
         <?php
         // Mostrar reservas con información del usuario
         if (!empty($reservas)) {
             echo "<h3>Reservas:</h3>";
-            echo "<ul>";
+            echo "<table>";
+            echo "<tr><th>Cancha</th><th>Fecha</th><th>Horario</th><th>Reservado por</th></tr>";
+
             foreach ($reservas as $reserva) {
-                echo "<li>{$reserva['cancha_nombre']} - {$reserva['horario_inicio']} a {$reserva['horario_fin']} (Reservado por: <a href='mostrar_usuario.php?id={$reserva['usuario_id']}'>{$reserva['usuario_nombre']}</a>)</li>";
+                echo "<tr>";
+                echo "<td>{$reserva['cancha_nombre']}</td>";
+                echo "<td>" . date('d/m/Y', strtotime($reserva['fecha_reserva'])) . "</td>";
+                echo "<td>{$reserva['horario_inicio']} a {$reserva['horario_fin']}</td>";
+                echo "<td><a href='mostrar_usuario.php?id={$reserva['usuario_id']}'>{$reserva['usuario_nombre']}</a></td>";
+                echo "</tr>";
             }
-            echo "</ul>";
+
+            echo "</table>";
         } else {
             echo "<p>No hay reservas realizadas.</p>";
         }
         ?>
 
+        <p><a href="index.php">Volver a la Página Principal</a></p>
     </div>
 </body>
 </html>
